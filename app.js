@@ -522,7 +522,8 @@ function RotateTetromino()
         // We are cloning the array otherwise it would create a reference to the array that triggers error
         curTetrominoBU = [...curTetromino];
 
-        // Find the new rotation by getting the x value of the last square of the Tetromino and then orientate remaining squares based on it
+        // Find the new rotation by getting the x value of the last square of the Tetromino
+        // Then orientate remaining squares based on it
         let x = tetrominoCopy[i][0];
         let y = tetrominoCopy[i][1];
         let newX = (GetLastSquareX() - y);

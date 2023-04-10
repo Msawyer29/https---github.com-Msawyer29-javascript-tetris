@@ -4,6 +4,7 @@ A prototype model I designed for a school project using canvas to build a retro 
 Some of the current functions/features:
 - Reset button
 - Status: Playing / Game Over (when tetrominos reach top of gameboard)
+- Controls A : move left, D : move right, S : move down, E : rotate
 - Generate random tetrominos, all 7 classic shapes
 - New shape falls at a speed of 1 line per second
 - Wall, vertical and horizontal collision checks

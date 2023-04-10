@@ -15,6 +15,6 @@ Improvements to make:
 - Adjust game scale, my gameboard looks best at a scale of 2:2, however this requires user to zoom out of their browser to about 50% for best playing experience
 - Add a pause button
 - Display "next shape" on the right side of the gameboard 
-- Implement game levels, every 10 lines completed, level increase +1, new shape falls faster
+- Implement game levels, every 10 lines completed, level increase +1, new shape falls faster, score calculator for level increase
 - High score field, save high score in browser
 - Add music/sfx

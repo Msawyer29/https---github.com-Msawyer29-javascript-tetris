@@ -53,7 +53,7 @@ class Coordinates{
 }
 
 // Execute SetupCanvas when page loads (BUG: font is not loading unless page is refreshed after opening)
-document.addEventListener('DOMContentLoaded', SetupCanvas); 
+window.addEventListener('DOMContentLoaded', SetupCanvas); 
 
 // Creates an array with square coordinates [0,0] Pixels X: 11 Y: 9, [1,0] Pixels X: 34 Y: 9
 function CreateCoordArray(){
@@ -70,24 +70,30 @@ function CreateCoordArray(){
     }
 }
 
-// Create the canvas function, layout game board, score, level, controls, font, etc.
+// Create the setup canvas function, canvas variable, dimensions and font
 function SetupCanvas(){
     canvas = document.getElementById('my-canvas');
     ctx = canvas.getContext('2d');
     canvas.width = 936;
     canvas.height = 956;
-    
+
     // Define a FontFace - Font "Press Start 2P"
     const font = new FontFace("Press Start 2P", "url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nRivN04w.woff2)", {
-    style: "cursive",
+    style: "normal",
     weight: "400",
     stretch: "condensed",
     });
   
     // Add font to document.fonts (FontFaceSet)
     document.fonts.add(font);
-    font.load().then( () => {console.log("Font is loaded.")});
+    font.load().then( () => {
+        // Call the rest of the canvas drawing functions after the font is loaded
+        drawCanvas();
+    });
+}
 
+// Create the layout game board, score, level, controls, etc.
+function drawCanvas() {
     // Double the size of on screen elements to fit the browser
     ctx.scale(2, 2);
 
@@ -453,8 +459,13 @@ function CheckForCompletedRows(){
             }
         }
     }
-    if(rowsToDelete > 0){ // Score Editor increase score
-        score += 10;
+    if(rowsToDelete > 0){ // Score Editor increase score +100 pts per line
+        // Add a condition to check if 4 lines are cleared at once "Tetris"
+        if (rowsToDelete === 4) { // 4 lines in a row equals "Tetris" 800 pts
+            score += 800;
+        } else {
+            score += 100; // one line equals 100 pts
+        }
         ctx.fillStyle = 'black'; // score text box background color
         ctx.fillRect(310, 109, 140, 19);
         ctx.font = "16px 'Press Start 2P'"; 

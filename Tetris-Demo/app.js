@@ -292,7 +292,8 @@ function CreateTetromino(){
     curTetrominoColor = tetrominoColors[randomTetromino];
 }
 
-// Check if the Tetromino hits the wall using for loop: cycle through squares to see if the value is <= to 0 or >= 11
+// Check if the Tetromino hits the wall using for loop: 
+// cycle through squares to see if the value is <= to 0 or >= 11
 // If moving in a direction that is off the gameboard stop movement
 function HittingTheWall(){
     for(let i = 0; i < curTetromino.length; i++){

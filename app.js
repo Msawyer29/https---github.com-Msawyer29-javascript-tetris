@@ -55,12 +55,15 @@ class Coordinates{
 // Execute SetupCanvas when page loads (BUG: font is not loading unless page is refreshed after opening)
 window.addEventListener('DOMContentLoaded', SetupCanvas); 
 
-// Creates an array with square coordinates [0,0] Pixels X: 11 Y: 9, [1,0] Pixels X: 34 Y: 9
+// Creates an array with square coordinates 
+// [0,0] Pixels X: 11 Y: 9
+// [1,0] Pixels X: 34 Y: 9
 function CreateCoordArray(){
     let xR = 0, yR = 19;
     let i = 0, j = 0;
     for(let y = 9; y <= 446; y += 23){
-        // 12 * 23 = 276 - 12 = 264 Max X value (square is 11 px across w 1 px space, so 12 total)
+        // 12 * 23 = 276 - 12 = 264 Max X value
+        // (square is 11 px across w 1 px space, so 12 total)
         for(let x = 11; x <= 264; x += 23){
             coordinateArray[i][j] = new Coordinates(x,y);
             i++;
@@ -265,7 +268,8 @@ function DeleteTetromino(){
     }
 }
 
-// Generate random Tetrominos with color - define each shape index where there is a colored block
+// Generate random Tetrominos with color
+// define each shape index where there is a colored block
 function CreateTetrominos(){
     // Push T 
     tetrominos.push([[1,0], [0,1], [1,1], [2,1]]);
@@ -378,7 +382,8 @@ function CheckForVerticalCollison(){
 
 // Check for horizontal shape collision
 function CheckForHorizontalCollision(){
-    // Copy the Teromino to use x value to check if new value would collide with a stopped Tetromino
+    // Copy the Teromino to use x value to
+    // check if new value would collide with a stopped Tetromino
     var tetrominoCopy = curTetromino;
     var collision = false;
 
@@ -390,7 +395,8 @@ function CheckForHorizontalCollision(){
         var x = square[0] + startX;
         var y = square[1] + startY;
 
-        // Move Tetromino copy square into position based on direction user is moving
+        // Move Tetromino copy square into position
+        // (based on direction user is moving)
         if (direction == DIRECTION.LEFT){
             x--;
         }else if (direction == DIRECTION.RIGHT){
@@ -407,7 +413,6 @@ function CheckForHorizontalCollision(){
             break;
         }
     }
-
     return collision;
 }
 
@@ -519,7 +524,8 @@ function RotateTetromino()
     for(let i = 0; i < tetrominoCopy.length; i++)
     {
         // Below handles error with a backup (BU) Tetromino
-        // We are cloning the array otherwise it would create a reference to the array that triggers error
+        // We are cloning the array otherwise it would create 
+        // a reference to the array that triggers error
         curTetrominoBU = [...curTetromino];
 
         // Find the new rotation by getting the x value of the last square of the Tetromino
